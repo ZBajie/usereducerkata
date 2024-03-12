@@ -1,0 +1,23 @@
+.use-effect-hook {
+  background-color: burlywood;
+  color: rgb(38, 25, 215);
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 10px;
+  max-width: fit-content;
+  box-shadow: 5px 10px 10px rgb(148, 148, 90);
+  h2 {
+    font-size: xx-large;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    text-shadow: 10px 10px 10px;
+    text-decoration: underline dashed;
+    text-decoration-color: aquamarine;
+  }
+  p {
+    color: rgb(57, 57, 198);
+    font-size: x-large;
+    font-weight: 900;
+    text-transform: capitalize;
+  }
+}

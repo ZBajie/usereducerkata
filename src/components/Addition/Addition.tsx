@@ -13,7 +13,7 @@ type Action = {
   num: number
 }
 
-const addition = (state: State, action: Action) => {
+const addition = (state: State, action: Action): State => {
   switch (action.type) {
     case ACTION.ADD: {
       return {
