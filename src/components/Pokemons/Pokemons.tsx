@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+
 export type Root = {
   count: number
   next: string
@@ -18,6 +19,7 @@ function Pokemons() {
     previous: null,
     results: [],
   } as Root)
+
   useEffect(() => {
     const url = "https://pokeapi.co/api/v2/pokemon/"
 

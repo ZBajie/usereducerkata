@@ -1,3 +1,4 @@
+import AddText from "./components/AddText/AddText"
 import Addition from "./components/Addition/Addition"
 import Header from "./components/Header/Header"
 import Pokemons from "./components/Pokemons/Pokemons"
@@ -11,6 +12,7 @@ function App() {
         <p>extra element</p>
         <p>one more element</p>
       </Header>
+      <AddText />
       <Pokemons />
       <UseEffectHook />
       <Stringer />
