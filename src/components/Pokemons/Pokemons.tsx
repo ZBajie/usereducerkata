@@ -13,6 +13,7 @@ export type Result = {
 }
 
 function Pokemons() {
+  const [isLoading, setIsLoading] = useState(false)
   const [data, setData] = useState({
     count: 0,
     next: "",
@@ -21,15 +22,33 @@ function Pokemons() {
   } as Root)
 
   useEffect(() => {
+    let isMounted = true
     const url = "https://pokeapi.co/api/v2/pokemon/"
 
     const getPokemons = async () => {
-      const result = await fetch(url)
-      const resultData = await result.json()
-      console.log("Pokemons", resultData)
-      setData(resultData)
+      try {
+        setIsLoading(true)
+        const result = await fetch(url)
+        const resultData = await result.json()
+        console.log("Pokemons", resultData)
+        if (isMounted) {
+          setData(resultData)
+        }
+      } catch (error) {
+        if (isMounted) {
+          console.log(error)
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false)
+        }
+      }
     }
     getPokemons()
+
+    return () => {
+      isMounted = false
+    }
   }, [])
   return (
     <section className="pokemons">
