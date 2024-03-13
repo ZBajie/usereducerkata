@@ -6,4 +6,22 @@
   padding: 2rem;
   border: 10px dotted blue;
   box-shadow: 20px 20px 20px green;
+  h2 {
+    margin-bottom: 2rem;
+  }
+  p {
+    text-transform: capitalize;
+    margin: 0.3rem;
+  }
+  button {
+    width: 5rem;
+    margin-top: 2rem;
+    padding: 0.5rem;
+    font-weight: 900;
+    background-color: rgb(153, 225, 37);
+    color: green;
+  }
+  button:last-child {
+    margin-left: 2rem;
+  }
 }

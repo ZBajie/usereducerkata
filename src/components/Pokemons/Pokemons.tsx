@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 export type Root = {
   count: number
   next: string
-  previous: unknown
+  previous: string
   results: Result[]
 }
 
@@ -17,13 +17,14 @@ function Pokemons() {
   const [data, setData] = useState({
     count: 0,
     next: "",
-    previous: null,
+    previous: "",
     results: [],
   } as Root)
 
+  const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/")
+
   useEffect(() => {
     let isMounted = true
-    const url = "https://pokeapi.co/api/v2/pokemon/"
 
     const getPokemons = async () => {
       try {
@@ -31,6 +32,7 @@ function Pokemons() {
         const result = await fetch(url)
         const resultData = await result.json()
         console.log("Pokemons", resultData)
+        console.log("next", resultData.next)
         if (isMounted) {
           setData(resultData)
         }
@@ -49,16 +51,34 @@ function Pokemons() {
     return () => {
       isMounted = false
     }
-  }, [])
+  }, [url])
   return (
     <section className="pokemons">
       <h2>Pokemons</h2>
       <div>
-        {data.results &&
+        {isLoading ? (
+          <p>loading...</p>
+        ) : (
+          data.results &&
           data.results.map((item, i) => {
             return <p key={i}>{item.name}</p>
-          })}
+          })
+        )}
       </div>
+      <button
+        onClick={() => {
+          setUrl(data.previous)
+        }}
+      >
+        Previous
+      </button>
+      <button
+        onClick={() => {
+          setUrl(data.next)
+        }}
+      >
+        Next
+      </button>
     </section>
   )
 }

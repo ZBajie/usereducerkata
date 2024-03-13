@@ -18,8 +18,8 @@ function UseEffectHook() {
     const fetchPokemon = async () => {
       const response = await fetch(url)
       const data = await response.json()
-      console.log(data)
-      console.log(data.sprites.back_default)
+      //console.log(data)
+      //console.log(data.sprites.back_default)
       if (!ignore) {
         setName(data.forms[0].name)
         setPokemonData(data)
